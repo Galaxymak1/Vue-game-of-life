@@ -14,6 +14,10 @@ TypeScript cannot handle type information for `.vue` imports by default, so we r
 
 See [Vite Configuration Reference](https://vite.dev/config/).
 
+## Tailwind CSS
+
+This project is configured to use Tailwind CSS for utility-first styling. You can apply Tailwind utility classes directly in your Vue components. Tailwind is set up via `tailwind.config.cjs` and `postcss.config.cjs`, and the entry CSS file is `src/assets/tailwind.css`. For more information, see https://tailwindcss.com/docs.
+
 ## Project Setup
 
 ```sh

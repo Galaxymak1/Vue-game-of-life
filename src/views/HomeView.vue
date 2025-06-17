@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import GameOfLife from '@/components/templates/GameOfLife.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <GameOfLife/>
   </main>
 </template>
