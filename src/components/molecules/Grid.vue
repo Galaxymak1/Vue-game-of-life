@@ -3,8 +3,8 @@
   <div
     class="grid"
     :style="{
-      gridTemplateColumns: 'repeat(' + cols + ', 30px)',
-      gridTemplateRows: 'repeat(' + rows + ',30px)'
+      gridTemplateColumns: 'repeat(' + cols + ', '+ size+ 'px)',
+      gridTemplateRows: 'repeat(' + rows + ','+ size+ 'px)'
     }"
   >
     <Cell
@@ -12,6 +12,7 @@
       :key="index"
       :alive="cell === 1"
       @toggle="() => handleToggle(index)"
+      :size="size"
     />
   </div>
 </template>
@@ -21,7 +22,8 @@ import { computed } from 'vue';
 import Cell from '@/components/atoms/Cell.vue';
 
 const props = defineProps({
-  grid: { type: Array, required: true }
+  grid: { type: Array, required: true },
+  size: { type: Number, default: 20 }
 });
 const emit = defineEmits(['toggle-cell']);
 

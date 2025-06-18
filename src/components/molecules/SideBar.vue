@@ -1,5 +1,5 @@
 <template>
-  <aside class=" h-full bg-gray-900 text-white p-6 flex flex-col space-y-8">
+  <aside class=" h-full bg-gray-900 text-white p-6 flex flex-col space-y-8 w-full max-w-xs shadow-lg">
     <!-- Controls Buttons -->
     <div>
       <Controls
@@ -13,7 +13,6 @@
       />
     </div>
 
-    <!-- Presets Dropdown -->
     <div>
       <h2 class="text-lg font-semibold mb-2">Presets</h2>
       <select
@@ -28,7 +27,6 @@
       </select>
     </div>
 
-    <!-- Stats Cards -->
     <div class="mt-auto space-y-4">
       <div class="bg-gray-800 p-3 rounded shadow-inner text-center">
         <p class="text-sm text-gray-400">Generation</p>
@@ -43,20 +41,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, defineEmits, defineProps } from 'vue';
+import { ref, computed } from 'vue';
 import Controls from '@/components/molecules/Controls.vue';
 
-const props = defineProps({
-  running: { type: Boolean, required: true },
-  initialSpeed: { type: Number, default: 500 },
-  generation: { type: Number, required: true },
-  grid: { type: Array, required: true }
-});
+interface SidebarProps {
+  running: boolean;
+  initialSpeed?: number;
+  generation: number;
+  grid: number[][];
+}
+
+const props = defineProps<SidebarProps>();
 const emit = defineEmits(['start', 'stop', 'clear', 'randomize', 'update-speed', 'preset-change']);
 
 const preset = ref('');
 
-// Compute alive cells count from grid prop
 const aliveCount = computed(() => props.grid.flat().reduce((sum: number, cell: number) => sum + cell, 0));
 
 function applyPreset() {

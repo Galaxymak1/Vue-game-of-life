@@ -1,17 +1,22 @@
 <template>
-  <div class="cell" :class="{ alive }" @click="$emit('toggle')" />
+  <div
+    class="cell"
+    :class="{ alive }"
+    :style="{ width: size + 'px', height: size + 'px' }"
+    @click="$emit('toggle')"
+  />
 </template>
 
 <script setup>
 const props = defineProps({
-  alive: { type: Boolean, required: true }
-});
+  alive: { type: Boolean, required: true },
+  size: { type: Number, default: 20 }
+})
 </script>
 
 <style scoped>
 .cell {
-  width: 30px;
-  height: 30px;
+
   border: 1px solid #ddd;
   box-sizing: border-box;
 }
